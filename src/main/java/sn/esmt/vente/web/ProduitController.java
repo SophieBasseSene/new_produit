@@ -1,10 +1,7 @@
 package sn.esmt.vente.web;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sn.esmt.vente.entity.ProduitEntity;
 import sn.esmt.vente.repository.ProduitRepository;
 import sn.esmt.vente.service.ProduitService;
@@ -26,4 +23,14 @@ public class ProduitController {
   public List<ProduitEntity> all(){
     return produitService.getALL().get();
   }
+  @PutMapping
+  public ProduitEntity update(String ref , ProduitEntity produitEntity){
+    return produitService.update(ref, produitEntity);
+  }
+
+  @DeleteMapping
+  public void delete(String ref ) {
+    produitService.delete(ref);
+  }
+
 }
